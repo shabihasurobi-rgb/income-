@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CashReward App</title>
     
-    <!-- Your New Ad Code -->
-<script src='//libtl.com/sdk.js' data-zone='10410590' data-sdk='show_10410590'></script>
+    <!-- Ad Script: Updated to https for better loading -->
+    <script src='https://libtl.com/sdk.js' data-zone='10410590' data-sdk='show_10410590' crossorigin="anonymous"></script>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -97,19 +97,20 @@
                     </div>
                     <div class="space-y-3">
                         <div class="bg-orange-500 p-3 rounded-lg flex items-center justify-between text-black">
-                            <div class="flex items-center space-x-3"><span class="text-3xl">ðŸ¤©</span><div><h3 class="font-bold">Watch Short Ad</h3><p class="text-xs font-medium">Rewarded Interstitial</p></div></div>
+                            <div class="flex items-center space-x-3"><span class="text-3xl">🤩</span><div><h3 class="font-bold">Watch Short Ad</h3><p class="text-xs font-medium">Rewarded Interstitial</p></div></div>
                             <button class="bg-white text-orange-500 font-bold px-6 py-2 rounded-lg text-sm btn" onclick="claimReward('interstitial')">Claim</button>
                         </div>
                         <div class="card-bg p-3 rounded-lg flex items-center justify-between">
-                            <div class="flex items-center space-x-3"><span class="text-3xl">ðŸ˜Ž</span><div><h3 class="font-semibold">Click for Reward</h3><p class="text-xs text-gray-400">Rewarded Popup</p></div></div>
+                            <div class="flex items-center space-x-3"><span class="text-3xl">😎</span><div><h3 class="font-semibold">Click for Reward</h3><p class="text-xs text-gray-400">Rewarded Popup</p></div></div>
                             <button class="bg-white text-black font-bold px-6 py-2 rounded-lg text-sm btn" onclick="claimReward('popup')">Claim</button>
                         </div>
+                         <!-- Watch Video Task Updated -->
                          <div class="card-bg p-3 rounded-lg flex items-center justify-between">
-                            <div class="flex items-center space-x-3"><span class="text-3xl">ðŸ‘€</span><div><h3 class="font-semibold">Watch a Video</h3><p class="text-xs text-gray-400">In-App Interstitial</p></div></div>
+                            <div class="flex items-center space-x-3"><span class="text-3xl">👀</span><div><h3 class="font-semibold">Watch a Video</h3><p class="text-xs text-gray-400">Visit Link & Earn</p></div></div>
                             <button class="bg-gray-700 text-white font-bold px-6 py-2 rounded-lg text-sm btn" onclick="claimReward('inApp')">Start</button>
                         </div>
                         <div class="card-bg p-3 rounded-lg flex items-center justify-between">
-                            <div class="flex items-center space-x-3"><span class="text-3xl">ðŸŽ®</span><div><h3 class="font-semibold">Play Mini App</h3><p class="text-xs text-gray-400">Get a big reward!</p></div></div>
+                            <div class="flex items-center space-x-3"><span class="text-3xl">🎮</span><div><h3 class="font-semibold">Play Mini App</h3><p class="text-xs text-gray-400">Get a big reward!</p></div></div>
                             <button class="bg-blue-500 text-white font-bold px-6 py-2 rounded-lg text-sm btn" onclick="claimReward('miniApp')">Play</button>
                         </div>
                     </div>
@@ -124,6 +125,8 @@
                     <p class="text-sm text-gray-400 mb-1">Current Balance: <span class="font-bold text-accent"><span id="wallet-coin-balance">0</span> Coins</span></p>
                     <p class="text-sm text-gray-400 mb-2">Minimum Withdrawal: <span id="min-withdrawal-info">...</span> Coins</p>
                     <p class="text-sm text-gray-400 mb-4 font-semibold" id="coin-value-info">...</p>
+                    <!-- Referral Requirement Info -->
+                    <p class="text-xs text-yellow-500 mb-2">* Minimum 10 referrals required to withdraw.</p>
                     <input id="withdraw-amount" type="number" placeholder="Enter coin amount" class="w-full p-3 rounded-lg input-field mb-3">
                     <select id="withdraw-method" class="w-full p-3 rounded-lg input-field mb-3"></select>
                     <div id="payment-details-container"></div>
@@ -135,18 +138,22 @@
                 </div>
             </div>
 
-            <!-- Refer Page -->
+            <!-- Refer Page (Updated UI) -->
             <div id="refer-page" class="p-4 space-y-6 sub-page">
                  <h2 class="text-xl font-bold text-center">Refer & Earn</h2>
                  <div class="card-bg p-6 rounded-lg text-center">
-                     <p class="text-gray-400 mb-2">Your Referral Code</p>
-                     <div class="bg-gray-800 p-3 rounded-lg flex items-center justify-center mb-4">
-                         <span id="referral-code" class="text-2xl font-bold tracking-widest">LOADING...</span>
-                         <button id="copy-code-btn" class="ml-4"><i data-lucide="copy" class="w-6 h-6 text-gray-400"></i></button>
+                     <p class="text-gray-400 mb-2">Your Referral Link</p>
+                     <!-- Changed from Code to Link Display -->
+                     <div class="bg-gray-800 p-3 rounded-lg flex items-center justify-center mb-4 break-all border border-gray-700">
+                         <span id="referral-link" class="text-sm font-bold text-accent text-center">LOADING...</span>
+                         <button id="copy-link-btn" class="ml-2 flex-shrink-0"><i data-lucide="copy" class="w-5 h-5 text-gray-400"></i></button>
                      </div>
-                     <p class="text-sm text-gray-300">Share the code with your friends.</p>
+                     <p class="text-sm text-gray-300 mb-2">Total Referrals: <span id="referral-count-display" class="font-bold text-accent">0</span> / 10</p>
+                     <p class="text-xs text-gray-500">Share this bot link to earn bonuses.</p>
                  </div>
-                 <button id="share-btn" class="w-full p-3 rounded-lg btn-accent">Share Your Code</button>
+                 <button id="share-btn" class="w-full p-3 rounded-lg btn-accent">Share Your Link</button>
+                 
+                 <!-- Manual Input Kept for tracking flexibility -->
                  <div class="card-bg p-4 rounded-lg mt-6">
                     <h3 class="font-semibold mb-3 text-center">Have a Referral Code?</h3>
                     <input id="enter-referral-code" type="text" placeholder="Enter code here" class="w-full p-3 rounded-lg input-field mb-3">
@@ -208,11 +215,17 @@
         
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
         import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc, updateDoc, collection, addDoc, serverTimestamp, query, where, getDocs, orderBy, limit } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+        import { getFirestore, doc, setDoc, getDoc, updateDoc, collection, addDoc, serverTimestamp, query, where, getDocs, orderBy, limit, increment } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
+
+        // --- Configuration ---
+        // Direct link for the "Watch a Video" task
+        const VIDEO_TASK_LINK = "https://www.youtube.com/@MrBeast"; 
+        const MIN_REFERRAL_FOR_WITHDRAW = 10;
+        const BOT_BASE_LINK = "https://t.me/income_18_bot";
 
         let currentUser = null;
         let userData = null;
@@ -223,13 +236,14 @@
         const walletCoinBalanceEl = document.getElementById('wallet-coin-balance');
         const profileNameEl = document.getElementById('profile-name');
         const profileEmailEl = document.getElementById('profile-email');
-        const referralCodeEl = document.getElementById('referral-code');
+        const referralLinkEl = document.getElementById('referral-link');
         const minWithdrawalInfoEl = document.getElementById('min-withdrawal-info');
         const coinValueInfoEl = document.getElementById('coin-value-info');
         const withdrawMethodSelect = document.getElementById('withdraw-method');
         const notificationDot = document.getElementById('notification-dot');
         const adsLeftCountEl = document.getElementById('ads-left-count');
         const paymentDetailsContainer = document.getElementById('payment-details-container');
+        const referralCountDisplayEl = document.getElementById('referral-count-display');
 
         window.onload = () => {
             lucide.createIcons();
@@ -270,11 +284,20 @@
                 const userSnap = await getDoc(userRef);
                 if (userSnap.exists()) {
                     userData = userSnap.data();
+                    if (typeof userData.referralCount === 'undefined') {
+                         userData.referralCount = 0;
+                    }
+                    if (!userData.referralCode) {
+                         // Generate code if missing for existing users
+                         userData.referralCode = Math.random().toString(36).substring(2, 8).toUpperCase();
+                         await updateDoc(userRef, { referralCode: userData.referralCode });
+                    }
                 } else {
                     const ownReferralCode = Math.random().toString(36).substring(2, 8).toUpperCase();
                     const defaultUserData = {
                         uid: currentUser.uid, name: currentUser.displayName || currentUser.email.split('@')[0], email: currentUser.email,
                         balance: 50, referralCode: ownReferralCode, referredBy: null,
+                        referralCount: 0, 
                         lastNotificationCheck: new Date(),
                         createdAt: serverTimestamp(),
                         dailyAdCount: 0, lastAdWatchDate: new Date().toISOString().split('T')[0], isBlocked: false
@@ -305,9 +328,17 @@
             walletCoinBalanceEl.textContent = balance;
             profileNameEl.textContent = userData.name || 'No Name';
             profileEmailEl.textContent = userData.email || 'No Email';
-            referralCodeEl.textContent = userData.referralCode || '...';
+            
+            // Updated: Show Referral Link instead of Code
+            const fullLink = `${BOT_BASE_LINK}?start=${userData.referralCode}`;
+            referralLinkEl.textContent = fullLink;
+            
+            // Update Referral Count Display
+            const refCount = userData.referralCount || 0;
+            referralCountDisplayEl.textContent = refCount;
+            
             minWithdrawalInfoEl.textContent = `${appConfig.minWithdrawal || 5000} Coins`;
-            coinValueInfoEl.textContent = `${appConfig.coinValueCoins || 1000} Coins = à§³${appConfig.coinValueInr || 10}`;
+            coinValueInfoEl.textContent = `${appConfig.coinValueCoins || 1000} Coins = ৳${appConfig.coinValueInr || 10}`;
             withdrawMethodSelect.innerHTML = '';
             (appConfig.paymentMethods || []).forEach(method => {
                 const option = document.createElement('option');
@@ -366,8 +397,8 @@
                 });
             });
             document.getElementById('notification-bell').addEventListener('click', () => { navigateTo('notifications-page'); loadNotifications(); });
-            document.getElementById('copy-code-btn').addEventListener('click', copyReferralCode);
-            document.getElementById('share-btn').addEventListener('click', shareReferralCode);
+            document.getElementById('copy-link-btn').addEventListener('click', copyReferralLink); 
+            document.getElementById('share-btn').addEventListener('click', shareReferralLink);
             document.getElementById('withdraw-btn').addEventListener('click', handleWithdrawal);
             document.getElementById('home-withdraw-btn').addEventListener('click', () => navigateTo('wallet-page'));
             document.getElementById('apply-referral-btn').addEventListener('click', handleApplyReferralCode);
@@ -489,10 +520,25 @@
                     const referrerDoc = querySnapshot.docs[0];
                     const referrerRef = doc(db, "users", referrerDoc.id);
                     const referrerData = referrerDoc.data();
-                    await updateDoc(referrerRef, { balance: (referrerData.balance || 0) + 100 });
+                    
+                    // Update Referrer: Add Balance AND Increment Referral Count
+                    await updateDoc(referrerRef, { 
+                        balance: increment(100),
+                        referralCount: increment(1)
+                    });
+                    
+                    // Update New User: Add Bonus and mark as referred
                     const newUserRef = doc(db, "users", currentUser.uid);
-                    await updateDoc(newUserRef, { balance: (userData.balance || 0) + 100, referredBy: referrerCode });
-                    userData.balance += 100; userData.referredBy = referrerCode;
+                    await updateDoc(newUserRef, { balance: increment(100), referredBy: referrerCode });
+                    
+                    if(currentUser.uid === referrerDoc.id) {
+                        userData.referralCount = (userData.referralCount || 0) + 1;
+                        userData.balance += 100;
+                    } else {
+                        userData.balance += 100;
+                        userData.referredBy = referrerCode;
+                    }
+
                     updateUI();
                     if(isManualApply) showAlert("Code applied successfully! You have received 100 coins.");
                 } else {
@@ -514,6 +560,12 @@
         }
 
         async function handleWithdrawal() {
+            // Check Referral Count
+            const currentRefCount = userData.referralCount || 0;
+            if (currentRefCount < MIN_REFERRAL_FOR_WITHDRAW) {
+                return showAlert(`দুঃখিত! আপনার উইথড্র করার জন্য কমপক্ষে ${MIN_REFERRAL_FOR_WITHDRAW} জন রেফার করতে হবে। বর্তমান রেফার: ${currentRefCount}`);
+            }
+
             const amount = parseInt(document.getElementById('withdraw-amount').value);
             const method = document.getElementById('withdraw-method').value;
             const paymentDetailInput = document.getElementById('payment-detail-input');
@@ -538,29 +590,35 @@
                 loadWithdrawalHistory();
             } catch (error) {
                 showAlert("Error submitting request: " + error.message);
-                await updateBalance(amount); // Refund if error
+                await updateBalance(amount); 
             } finally {
                 loader.style.display = 'none';
             }
         }
 
-        function copyReferralCode() {
-            const textToCopy = referralCodeEl.textContent;
+        function copyReferralLink() {
+            const textToCopy = referralLinkEl.textContent;
             navigator.clipboard.writeText(textToCopy).then(() => {
-                showAlert("Referral code copied!");
+                showAlert("Referral link copied!");
             }).catch(err => {
-                showAlert("Failed to copy code.");
+                showAlert("Failed to copy link.");
             });
         }
         
-        function shareReferralCode() {
-            const text = `Join CashReward and earn money! Use my referral code to get a bonus: ${userData.referralCode}`;
+        function shareReferralLink() {
+            const shareLink = referralLinkEl.textContent;
+            const shareText = `Join CashReward and earn money! Use my referral link: ${shareLink}`;
+            
             if (navigator.share) {
-                navigator.share({ title: 'Join CashReward!', text: text, url: window.location.href })
+                navigator.share({ 
+                    title: 'Join CashReward!', 
+                    text: shareText, 
+                    url: shareLink
+                })
                     .catch((error) => console.error("Share failed:", error));
             } else {
-                copyReferralCode();
-                showAlert("Share feature is not available. Referral code has been copied instead!");
+                copyReferralLink();
+                showAlert("Share feature is not available. Referral link has been copied instead!");
             }
         }
 
@@ -578,7 +636,36 @@
                 return showAlert("You have reached your daily ad watch limit.");
             }
             
+            // Special Logic for 'inApp' (Watch Video) -> Direct Link
+            if (taskType === 'inApp') {
+                loader.style.display = 'flex';
+                try {
+                    // Open the direct link
+                    window.open(VIDEO_TASK_LINK, '_blank');
+                    
+                    // Count as a task completion
+                    const newCount = (userData.dailyAdCount || 0) + 1;
+                    await updateDoc(userRef, { dailyAdCount: newCount });
+                    userData.dailyAdCount = newCount;
+                    
+                    // Give Reward
+                    await updateBalance(50); 
+                    showAlert("Congratulations! You have won 50 coins.");
+                    updateAdsLeftCount();
+
+                } catch(e) {
+                    console.error("Error:", e);
+                    showAlert('Could not complete task. Please try again later.');
+                } finally {
+                    loader.style.display = 'none';
+                }
+                return; 
+            }
+
+            // Ad Logic for other tasks
+            // Check if ad function is loaded
             if (typeof window.show_10410590 !== 'function') {
+                console.error("Ad script not loaded. Type of show_10410590:", typeof window.show_10410590);
                 return showAlert("Ad service is currently unavailable. Please try again later.");
             }
             
@@ -588,7 +675,6 @@
                  switch(taskType) {
                     case 'interstitial': adPromise = window.show_10410590(); break;
                     case 'popup': adPromise = window.show_10410590('pop'); break;
-                    case 'inApp': adPromise = window.show_10410590({ type: 'inApp', inAppSettings: { frequency: 2, capping: 0.1, interval: 30, timeout: 5, everyPage: false } }); break;
                     case 'miniApp': adPromise = window.show_10410590(); break;
                     default: return;
                 }
